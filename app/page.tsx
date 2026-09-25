@@ -1,252 +1,284 @@
 "use client";
 
+import {
+  ArrowDown,
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
+  ChevronUp,
+  Code2,
+  Layers3,
+  Mail,
+  MapPin,
+  Palette,
+  Sparkles,
+  Star,
+  Terminal,
+  WandSparkles,
+  Zap,
+} from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-/* ---------------- Inline icons (no external icon library) ---------------- */
+/* =========================================================
+   CUSTOM BRAND ICONS (SVG)
+========================================================= */
 
-type IconProps = { className?: string };
-
-function IconMail({ className }: IconProps) {
+function Figma({ size = 24, ...props }: React.SVGProps<SVGSVGElement> & { size?: number | string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.6" />
-      <path d="M3.5 6.5 12 13l8.5-6.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z" />
+      <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z" />
+      <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z" />
+      <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z" />
+      <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z" />
     </svg>
   );
 }
 
-function IconInstagram({ className }: IconProps) {
+function GithubIcon({ size = 24, ...props }: React.SVGProps<SVGSVGElement> & { size?: number | string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" strokeWidth="1.6" />
-      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.6" />
-      <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
-    </svg>
-  );
-}
-
-function IconLinkedin({ className }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <rect x="3.5" y="3.5" width="17" height="17" rx="3" stroke="currentColor" strokeWidth="1.6" />
-      <path d="M7.8 10.2v6.2M7.8 7.6v.02M12 16.4v-3.6c0-1.4.9-2.4 2.2-2.4 1.3 0 1.9.9 1.9 2.4v3.6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M12 12.8v3.6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function IconGithub({ className }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
       <path
-        d="M12 2.5c-5.3 0-9.5 4.2-9.5 9.5 0 4.2 2.8 7.8 6.6 9.1.5.1.7-.2.7-.5v-1.9c-2.7.6-3.3-1.2-3.3-1.2-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.6-1.4-2.2-.2-4.5-1.1-4.5-4.9 0-1.1.4-2 1-2.7-.1-.2-.4-1.2.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 4.9 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.8-2.3 4.7-4.6 4.9.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.8-1.3 6.6-4.9 6.6-9.1 0-5.3-4.3-9.5-9.6-9.5Z"
-        stroke="currentColor"
-        strokeWidth="1.3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
       />
     </svg>
   );
 }
 
-function IconArrowUpRight({ className }: IconProps) {
+function LinkedinIcon({ size = 24, ...props }: React.SVGProps<SVGSVGElement> & { size?: number | string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
     </svg>
   );
 }
 
-function IconSparkles({ className }: IconProps) {
+function InstagramIcon({ size = 24, ...props }: React.SVGProps<SVGSVGElement> & { size?: number | string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <path
-        d="M11 3.5 12.3 8l4.5 1.3-4.5 1.3L11 15l-1.3-4.4L5.2 9.3l4.5-1.3L11 3.5Z"
-        fill="currentColor"
-      />
-      <path
-        d="M17.8 13.5 18.5 16l2.5.7-2.5.7-.7 2.6-.7-2.6-2.5-.7 2.5-.7.7-2.5Z"
-        fill="currentColor"
-      />
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
     </svg>
   );
 }
 
-/* ---------------- Data ---------------- */
+function WhatsappIcon({ size = 24, ...props }: React.SVGProps<SVGSVGElement> & { size?: number | string }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.05 7.15C8.86 7.15 8.55 7.22 8.29 7.5C8.03 7.78 7.31 8.46 7.31 9.85C7.31 11.24 8.32 12.58 8.46 12.77C8.6 12.96 10.4 15.74 13.17 16.93C13.83 17.21 14.34 17.38 14.75 17.51C15.41 17.72 16.01 17.69 16.49 17.62C17.02 17.54 18.13 16.95 18.36 16.3C18.6 15.65 18.6 15.09 18.53 14.98C18.46 14.86 18.27 14.8 17.99 14.66C17.71 14.52 16.33 13.84 16.07 13.75C15.82 13.65 15.63 13.61 15.45 13.89C15.26 14.17 14.73 14.8 14.57 14.98C14.41 15.17 14.25 15.19 13.97 15.05C13.69 14.91 12.79 14.62 11.73 13.67C10.9 12.93 10.34 12.02 10.2 11.74C10.06 11.46 10.19 11.31 10.33 11.17C10.45 11.05 10.6 10.85 10.74 10.69C10.88 10.53 10.93 10.41 11.02 10.23C11.11 10.05 11.07 9.88 11 9.74C10.93 9.6 10.37 8.23 10.14 7.67C9.91 7.13 9.68 7.21 9.51 7.2C9.36 7.19 9.17 7.15 9.05 7.15Z" />
+    </svg>
+  );
+}
 
-const contactChannels = [
+/* =========================================================
+   DATA
+========================================================= */
+
+const skills = [
   {
-    label: "Email",
-    value: "email@example.com",
-    href: "mailto:email@example.com",
-    icon: IconMail,
+    name: "UI/UX Design",
+    description: "Designing interfaces that feel simple, clear and intentional.",
+    icon: Palette,
+    number: "01",
   },
   {
-    label: "Instagram",
-    value: "@rifqi.dev",
-    href: "https://instagram.com/rifqi.dev",
-    icon: IconInstagram,
+    name: "Frontend",
+    description: "Turning designs and ideas into responsive web experiences.",
+    icon: Code2,
+    number: "02",
   },
   {
-    label: "LinkedIn",
-    value: "/in/rifqisetianto",
-    href: "https://linkedin.com/in/rifqisetianto",
-    icon: IconLinkedin,
+    name: "Figma",
+    description: "Wireframes, interfaces, prototypes and visual systems.",
+    icon: Figma,
+    number: "03",
   },
   {
-    label: "GitHub",
-    value: "@rifqisetianto",
-    href: "https://github.com/rifqisetianto",
-    icon: IconGithub,
+    name: "Next.js",
+    description: "Building modern web applications with React and Next.js.",
+    icon: Layers3,
+    number: "04",
+  },
+  {
+    name: "Tailwind CSS",
+    description: "Creating flexible visual systems directly in the interface.",
+    icon: WandSparkles,
+    number: "05",
+  },
+  {
+    name: "AI / ML",
+    description: "Currently exploring machine learning and intelligent systems.",
+    icon: Zap,
+    number: "06",
   },
 ];
 
-const projects = [
+const programmingProjects = [
   {
-    title: "Pitungan",
+    number: "01",
+    title: "OpenNova",
+    category: "WEB APPLICATION",
     description:
-      "Platform pembelajaran matematika interaktif yang dirancang agar belajar terasa lebih menyenangkan.",
-    tags: ["Next.js", "UI/UX", "Figma"],
-    image: "https://picsum.photos/seed/pitungan/800/600",
-    year: "2025",
-  },
-  {
-    title: "Volunear",
-    description:
-      "Platform untuk menemukan kegiatan volunteer berdasarkan lokasi dan minat pengguna.",
-    tags: ["UI/UX", "Product Design"],
-    image: "https://picsum.photos/seed/volunear/800/600",
-    year: "2025",
-  },
-  {
-    title: "My Portfolio",
-    description:
-      "Personal portfolio website dengan desain modern dan pengalaman yang responsif.",
-    tags: ["Next.js", "Tailwind"],
-    image: "https://picsum.photos/seed/portfolio-rifqi/800/600",
-    year: "2026",
-  },
-  {
-    title: "Nebula UI Kit",
-    description:
-      "Design system & komponen reusable untuk mempercepat proses development produk digital.",
-    tags: ["Figma", "Design System"],
-    image: "https://picsum.photos/seed/nebula-ui/800/600",
-    year: "2024",
-  },
-  {
-    title: "Lentera",
-    description:
-      "Platform donasi untuk menghubungkan komunitas dengan program sosial di sekitar mereka.",
-    tags: ["Next.js", "UI/UX"],
-    image: "https://picsum.photos/seed/lentera/800/600",
-    year: "2024",
-  },
-  {
-    title: "Selaras",
-    description:
-      "Aplikasi pelacak kebiasaan harian dengan visualisasi progres yang ringan dan intuitif.",
-    tags: ["React", "Product Design"],
-    image: "https://picsum.photos/seed/selaras/800/600",
-    year: "2023",
-  },
-];
-
-const skillCategories = [
-  {
-    category: "Frontend",
-    accent: "violet",
-    items: [
-      { name: "Next.js", badge: "N" },
-      { name: "React", badge: "R" },
-      { name: "TypeScript", badge: "TS" },
-      { name: "JavaScript", badge: "JS" },
-      { name: "Tailwind CSS", badge: "TW" },
+      "A platform connecting organizations with people who want to solve real-world innovation challenges.",
+    tags: ["Next.js", "Supabase", "Tailwind"],
+    images: [
+      "https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=900&q=85",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=85",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=85",
     ],
   },
   {
-    category: "Design",
-    accent: "blue",
-    items: [
-      { name: "Figma", badge: "F" },
-      { name: "UI/UX Design", badge: "UX" },
+    number: "02",
+    title: "Daycare System",
+    category: "UI/UX + AI",
+    description:
+      "An information system concept for daycare management, child identification and monitoring.",
+    tags: ["UI/UX", "System Design", "AI"],
+    images: [
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85",
+      "https://images.unsplash.com/photo-1587614382346-4ec70e388b28?auto=format&fit=crop&w=600&q=85",
+      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=85",
     ],
   },
   {
-    category: "Tools & Workflow",
-    accent: "emerald",
-    items: [
-      { name: "Git", badge: "G" },
-      { name: "VS Code", badge: "VS" },
+    number: "03",
+    title: "Air Quality",
+    category: "MACHINE LEARNING",
+    description:
+      "A machine learning project for classifying Jakarta air quality based on pollutant parameters.",
+    tags: ["Python", "KNN", "Machine Learning"],
+    images: [
+      "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=900&q=85",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=85",
+      "https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=600&q=85",
     ],
   },
 ];
 
-const skillNames = skillCategories.flatMap((c) => c.items.map((i) => i.name));
-
-const experience = [
+const uiuxProjects = [
   {
-    year: "2023 — Sekarang",
-    title: "Mahasiswa Informatika",
-    place: "Fokus Web Development & UI/UX",
+    number: "01",
+    title: "MedCare Mobile",
+    category: "HEALTHCARE APP",
     description:
-      "Mendalami pengembangan web modern, sistem desain, dan prinsip interaksi pengguna melalui project pribadi & perkuliahan.",
+      "Doctor consultation and telemedicine mobile experience designed with accessibility and clarity in mind.",
+    image:
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=85",
+    tags: ["Figma", "User Research", "Wireframing"],
   },
   {
-    year: "2024",
-    title: "Freelance UI/UX Designer",
-    place: "Remote",
+    number: "02",
+    title: "Lumina Dashboard",
+    category: "FINTECH UI",
     description:
-      "Merancang antarmuka untuk beberapa produk digital, dari riset pengguna hingga prototipe siap development.",
+      "Minimalist financial analytics platform dashboard with intuitive charts and clean information architecture.",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=85",
+    tags: ["UI Design", "Design System", "Prototyping"],
   },
   {
-    year: "2025",
-    title: "Frontend Developer",
-    place: "Project Independen",
+    number: "03",
+    title: "EduLearn Portal",
+    category: "EDTECH PLATFORM",
     description:
-      "Membangun aplikasi web interaktif menggunakan Next.js & Tailwind, dengan fokus pada performa dan aksesibilitas.",
+      "Interactive e-learning space designed for collaborative university student assignments and study resources.",
+    image:
+      "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=800&q=85",
+    tags: ["Interaction", "UX Flow", "Figma"],
   },
 ];
 
-const education = [
+const designProjects = [
   {
-    year: "2023 — Sekarang",
-    title: "S1 Teknik Informatika",
-    place: "Nama Universitas",
+    number: "01",
+    title: "Studio Rebrand",
+    category: "BRAND IDENTITY",
     description:
-      "Fokus pada rekayasa perangkat lunak, pengembangan web, dan interaksi manusia-komputer.",
+      "Visual identity system featuring bold typography, dynamic color palette, and geometric brand guidelines.",
+    image:
+      "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=800&q=85",
+    tags: ["Brand Identity", "Typography", "Print"],
   },
   {
-    year: "2020 — 2023",
-    title: "SMA — Jurusan MIPA",
-    place: "Nama Sekolah",
+    number: "02",
+    title: "Kinetic Posters",
+    category: "GRAPHIC DESIGN",
     description:
-      "Aktif di ekstrakurikuler teknologi dan mulai mempelajari dasar-dasar pemrograman.",
+      "Series of experimental visual posters exploring swiss style layout, typography rhythm, and texture.",
+    image:
+      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=85",
+    tags: ["Poster", "Typography", "Editorial"],
+  },
+  {
+    number: "03",
+    title: "Spatial 3D Forms",
+    category: "3D EXPERIMENTS",
+    description:
+      "Exploration of lighting, glass textures, abstract geometry, and fluid 3D compositions for web headers.",
+    image:
+      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=85",
+    tags: ["3D Art", "Spline", "Visual"],
   },
 ];
 
-const certifications = [
-  {
-    title: "Belajar Dasar Pemrograman JavaScript",
-    issuer: "Dicoding Indonesia",
-    year: "2024",
-    image: "https://picsum.photos/seed/cert-js/400/300",
-  },
-  {
-    title: "Front-End Web Development",
-    issuer: "Udemy",
-    year: "2024",
-    image: "https://picsum.photos/seed/cert-fe/400/300",
-  },
-  {
-    title: "UI/UX Design Fundamentals",
-    issuer: "Skilvul",
-    year: "2025",
-    image: "https://picsum.photos/seed/cert-uiux/400/300",
-  },
+const projects = programmingProjects;
+
+const educationImages = [
+  "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1200&q=85",
 ];
 
-/* ---------------- Scroll reveal helper ---------------- */
+const experienceImages = [
+  "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=85",
+];
+
+/* =========================================================
+   REVEAL ON SCROLL
+========================================================= */
 
 function Reveal({
   children,
@@ -263,1463 +295,1392 @@ function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const observer = new IntersectionObserver(
+    const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
-          observer.disconnect();
+          obs.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.12 }
     );
-    observer.observe(el);
-    return () => observer.disconnect();
+    obs.observe(el);
+    return () => obs.disconnect();
   }, []);
 
   return (
     <div
       ref={ref}
-      className={className}
-      style={{
-        transitionProperty: "opacity, transform",
-        transitionDuration: "800ms",
-        transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
-        transitionDelay: `${delay}ms`,
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0px)" : "translateY(28px)",
-      }}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={`transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+      } ${className}`}
     >
       {children}
     </div>
   );
 }
 
-function NeonFrame({
-  children,
-  className = "",
-  rounded = "rounded-3xl",
-}: {
-  children: React.ReactNode;
-  className?: string;
-  rounded?: string;
-}) {
+/* =========================================================
+   GLOBAL ADAPTIVE DYNAMIC CURSOR
+   - Active across the whole page
+   - Automatically adapts colors:
+     * Grid sections (#home, #skills, #education) -> Sunset Orange
+     * Non-grid sections (#about, #projects, #experience) -> Electric Blue
+     * Dark/Collab sections (#collab, footer) -> Glowing Gold/White
+========================================================= */
+
+function GlobalCursor() {
+  const mouse = useRef({ x: -100, y: -100 });
+  const points = useRef(
+    Array.from({ length: 6 }, () => ({ x: -100, y: -100 }))
+  );
+
+  const [visible, setVisible] = useState(false);
+  const [theme, setTheme] = useState<"blue" | "orange" | "light">("orange");
+  const [isInteractive, setIsInteractive] = useState(false);
+  const [, forceRender] = useState(0);
+
+  useEffect(() => {
+    let animationFrame: number;
+
+    const animate = () => {
+      points.current.forEach((point, index) => {
+        const target =
+          index === 0 ? mouse.current : points.current[index - 1];
+
+        point.x += (target.x - point.x) * (0.38 - index * 0.035);
+        point.y += (target.y - point.y) * (0.38 - index * 0.035);
+      });
+
+      forceRender((v) => v + 1);
+      animationFrame = requestAnimationFrame(animate);
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.current = { x: e.clientX, y: e.clientY };
+      if (!visible) setVisible(true);
+
+      const el = document.elementFromPoint(e.clientX, e.clientY);
+      if (el) {
+        const targetSection = el.closest("[data-cursor-theme]");
+        if (targetSection) {
+          const themeAttr = targetSection.getAttribute("data-cursor-theme") as "blue" | "orange" | "light";
+          if (themeAttr && themeAttr !== theme) {
+            setTheme(themeAttr);
+          }
+        } else {
+          const isDark = el.closest("#collab, footer");
+          const isGrid = el.closest("#home, #skills, #education");
+          if (isDark && theme !== "light") setTheme("light");
+          else if (isGrid && theme !== "orange") setTheme("orange");
+          else if (!isDark && !isGrid && theme !== "blue") setTheme("blue");
+        }
+
+        const interactive = el.closest("a, button, [role='button'], input, .group, article");
+        setIsInteractive(!!interactive);
+      }
+    };
+
+    const handleMouseLeave = () => {
+      setVisible(false);
+      mouse.current = { x: -100, y: -100 };
+      points.current.forEach((p) => {
+        p.x = -100;
+        p.y = -100;
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+      window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, [visible, theme]);
+
+  if (!visible) return null;
+
+  const validPoints = points.current.filter((p) => p.x > 0 && p.y > 0);
+  const follower = validPoints[1] || validPoints[0];
+
+  const themeColors = {
+    blue: {
+      border: "border-[#1677ff]",
+      bgAura: "bg-[#1677ff]/12",
+      shadowAura: "0 0 18px rgba(22, 119, 255, 0.45)",
+      dotBg: "bg-[#1677ff]",
+      dotShadow: "0 0 10px rgba(22, 119, 255, 0.8)",
+    },
+    orange: {
+      border: "border-[#ff5e00]",
+      bgAura: "bg-[#ff5e00]/15",
+      shadowAura: "0 0 20px rgba(255, 94, 0, 0.5)",
+      dotBg: "bg-[#ff5e00]",
+      dotShadow: "0 0 12px rgba(255, 94, 0, 0.85)",
+    },
+    light: {
+      border: "border-[#ffd166]",
+      bgAura: "bg-[#ffd166]/20",
+      shadowAura: "0 0 22px rgba(255, 209, 102, 0.6)",
+      dotBg: "bg-[#ffd166]",
+      dotShadow: "0 0 12px rgba(255, 209, 102, 0.9)",
+    },
+  };
+
+  const currentTheme = themeColors[theme];
+
   return (
-    <div className={`relative h-full w-full ${className}`}>
-      <div className={`neon-glow pointer-events-none absolute -inset-1 ${rounded} opacity-25 blur-md`} />
-      <div className={`neon-border relative h-full w-full p-[2.5px] ${rounded}`}>
-        <div className={`relative h-full w-full overflow-hidden bg-[#03030b] ${rounded}`}>
-          {children}
+    <div className="pointer-events-none fixed inset-0 z-[999] overflow-hidden">
+      {/* Outer Magnetic Aura Ring */}
+      {follower && (
+        <span
+          className={`fixed -translate-x-1/2 -translate-y-1/2 rounded-full border-2 transition-[width,height,transform,background-color,border-color] duration-200 ease-out ${currentTheme.border} ${currentTheme.bgAura}`}
+          style={{
+            left: follower.x,
+            top: follower.y,
+            width: isInteractive ? "52px" : "36px",
+            height: isInteractive ? "52px" : "36px",
+            boxShadow: currentTheme.shadowAura,
+          }}
+        />
+      )}
+
+      {/* Trailing Dots */}
+      {validPoints.map((point, index) => (
+        <span
+          key={index}
+          className={`fixed -translate-x-1/2 -translate-y-1/2 rounded-full transition-colors duration-200 ${currentTheme.dotBg}`}
+          style={{
+            left: point.x,
+            top: point.y,
+            width: `${Math.max(3, 11 - index * 1.5)}px`,
+            height: `${Math.max(3, 11 - index * 1.5)}px`,
+            opacity: Math.max(0.12, 0.9 - index * 0.14),
+            boxShadow: currentTheme.dotShadow,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+/* =========================================================
+   ANIMATED IMAGE SLIDESHOW
+========================================================= */
+
+function ImageSlideshow({ images }: { images: string[] }) {
+  const [active, setActive] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setActive((current) => (current + 1) % images.length);
+    }, 3200);
+
+    return () => clearInterval(interval);
+  }, [images.length, isPaused]);
+
+  const handlePrev = () => {
+    setActive((curr) => (curr - 1 + images.length) % images.length);
+  };
+
+  const handleNext = () => {
+    setActive((curr) => (curr + 1) % images.length);
+  };
+
+  return (
+    <div
+      className="relative flex h-[360px] sm:h-[400px] w-full items-center justify-center select-none"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Decorative star */}
+      <div className="absolute -left-2 -top-2 z-40 flex h-12 w-12 rotate-[-12deg] items-center justify-center rounded-full border-2 border-[#102a43] bg-white shadow-[4px_4px_0_#102a43]">
+        <Star size={19} fill="currentColor" />
+      </div>
+
+      {/* Stacked Animated Cards */}
+      <div className="relative h-[290px] sm:h-[330px] w-full max-w-[460px]">
+        {images.map((img, index) => {
+          const diff = (index - active + images.length) % images.length;
+          const isCenter = diff === 0;
+          const isRight = diff === 1;
+          const isLeft = diff === images.length - 1;
+
+          let styleTransform = "translate(-50%, 40px) scale(0.7)";
+          let zIndex = 0;
+          let opacity = 0;
+          let shadow = "none";
+          let rotate = "0deg";
+
+          if (isCenter) {
+            styleTransform = "translate(-50%, 0) scale(1)";
+            zIndex = 30;
+            opacity = 1;
+            shadow = "8px 8px 0 #102a43";
+            rotate = "0deg";
+          } else if (isRight) {
+            styleTransform = "translate(-10%, 25px) scale(0.85)";
+            zIndex = 20;
+            opacity = 0.85;
+            shadow = "5px 5px 0 #102a43";
+            rotate = "7deg";
+          } else if (isLeft) {
+            styleTransform = "translate(-90%, 25px) scale(0.85)";
+            zIndex = 20;
+            opacity = 0.85;
+            shadow = "6px 6px 0 #1677ff";
+            rotate = "-7deg";
+          }
+
+          return (
+            <div
+              key={img}
+              className="absolute left-1/2 top-0 h-full w-[82%] overflow-hidden rounded-[28px] border-2 border-[#102a43] bg-white transition-all duration-700 ease-out"
+              style={{
+                transform: `${styleTransform} rotate(${rotate})`,
+                zIndex,
+                opacity,
+                boxShadow: shadow,
+              }}
+            >
+              <img
+                src={img}
+                alt="Slideshow item"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#102a43]/30 via-transparent to-transparent" />
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Floating Controls & Dots */}
+      <div className="absolute -bottom-3 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2 rounded-full border-2 border-[#102a43] bg-white px-3 py-1.5 shadow-[4px_4px_0_#102a43]">
+        <button
+          onClick={handlePrev}
+          type="button"
+          aria-label="Previous"
+          className="flex h-7 w-7 items-center justify-center rounded-full bg-[#edf6ff] text-[#102a43] transition hover:bg-[#1677ff] hover:text-white"
+        >
+          <ChevronLeft size={15} />
+        </button>
+
+        <div className="flex items-center gap-1.5 px-1">
+          {images.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActive(idx)}
+              type="button"
+              aria-label={`Slide ${idx + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                idx === active
+                  ? "w-5 bg-[#1677ff]"
+                  : "w-2 bg-[#b5c8d9] hover:bg-[#829ab1]"
+              }`}
+            />
+          ))}
         </div>
+
+        <button
+          onClick={handleNext}
+          type="button"
+          aria-label="Next"
+          className="flex h-7 w-7 items-center justify-center rounded-full bg-[#edf6ff] text-[#102a43] transition hover:bg-[#1677ff] hover:text-white"
+        >
+          <ChevronRight size={15} />
+        </button>
+
+        <span className="border-l border-[#102a43]/20 pl-2 text-xs font-black text-[#102a43]">
+          0{active + 1}/0{images.length}
+        </span>
       </div>
     </div>
   );
 }
 
-/* ---------------- Count-up number ---------------- */
+/* =========================================================
+   GRID BACKGROUND
+========================================================= */
 
-function CountUp({
-  target,
-  duration = 1400,
-}: {
-  target: string;
-  duration?: number;
-}) {
-  const ref = useRef<HTMLParagraphElement>(null);
-  const [display, setDisplay] = useState("0");
-  const started = useRef(false);
-
-  // Split the target into a numeric part and a trailing suffix (+, ∞, etc.)
-  const match = target.match(/^(\d+)(.*)$/);
-  const numeric = match ? parseInt(match[1], 10) : null;
-  const suffix = match ? match[2] : "";
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    if (numeric === null) {
-      // Non-numeric target (e.g. "∞") — just fade/scale in instead of counting
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting && !started.current) {
-            started.current = true;
-            setDisplay(target);
-            observer.disconnect();
-          }
-        },
-        { threshold: 0.4 }
-      );
-      observer.observe(el);
-      return () => observer.disconnect();
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true;
-          const start = performance.now();
-          const step = (now: number) => {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            const value = Math.round(eased * numeric);
-            setDisplay(`${value}${suffix}`);
-            if (progress < 1) requestAnimationFrame(step);
-          };
-          requestAnimationFrame(step);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.4 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [numeric, suffix, target, duration]);
-
+function GridBackground() {
   return (
-    <p ref={ref} className="text-2xl font-bold text-white tabular-nums">
-      {display === "0" && numeric === null ? "0" : display}
-    </p>
+    <div
+      className="pointer-events-none absolute inset-0 opacity-80"
+      style={{
+        backgroundImage:
+          "linear-gradient(#d8e5f1 1px, transparent 1px), linear-gradient(90deg, #d8e5f1 1px, transparent 1px)",
+        backgroundSize: "42px 42px",
+      }}
+    />
   );
 }
 
-/* ---------------- Cursor aura + trail ---------------- */
-
-function CursorEffects() {
-  const auraRef = useRef<HTMLDivElement>(null);
-  const pos = useRef({ x: 0, y: 0 });
-  const target = useRef({ x: 0, y: 0 });
-  const lastSpawn = useRef(0);
-  const idRef = useRef(0);
-  const [enabled, setEnabled] = useState(false);
-  const [trail, setTrail] = useState<{ id: number; x: number; y: number }[]>(
-    []
-  );
-  const [ripples, setRipples] = useState<
-    { id: number; x: number; y: number }[]
-  >([]);
-
-  useEffect(() => {
-    const fine = window.matchMedia("(pointer: fine)").matches;
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (!fine || reduceMotion) return;
-    setEnabled(true);
-
-    const handleMove = (e: MouseEvent) => {
-      target.current = { x: e.clientX, y: e.clientY };
-
-      const now = performance.now();
-      if (now - lastSpawn.current > 45) {
-        lastSpawn.current = now;
-        const id = idRef.current++;
-        setTrail((prev) => [
-          ...prev.slice(-10),
-          { id, x: e.clientX, y: e.clientY },
-        ]);
-        window.setTimeout(() => {
-          setTrail((prev) => prev.filter((p) => p.id !== id));
-        }, 650);
-      }
-    };
-
-    const handleDown = (e: MouseEvent) => {
-      const id = idRef.current++;
-      setRipples((prev) => [...prev, { id, x: e.clientX, y: e.clientY }]);
-      window.setTimeout(() => {
-        setRipples((prev) => prev.filter((p) => p.id !== id));
-      }, 600);
-    };
-
-    let raf = 0;
-    const loop = () => {
-      pos.current.x += (target.current.x - pos.current.x) * 0.16;
-      pos.current.y += (target.current.y - pos.current.y) * 0.16;
-      if (auraRef.current) {
-        auraRef.current.style.transform = `translate(${pos.current.x}px, ${pos.current.y}px)`;
-      }
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
-
-    window.addEventListener("mousemove", handleMove);
-    window.addEventListener("mousedown", handleDown);
-    return () => {
-      window.removeEventListener("mousemove", handleMove);
-      window.removeEventListener("mousedown", handleDown);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-
-  if (!enabled) return null;
-
-  return (
-    <>
-      <div
-        ref={auraRef}
-        className="cursor-aura pointer-events-none fixed left-0 top-0 z-[70]"
-      />
-      {trail.map((p, i) => (
-        <span
-          key={p.id}
-          className="trail-dot pointer-events-none fixed z-[69]"
-          style={{
-            left: p.x,
-            top: p.y,
-            // @ts-expect-error custom css var for per-dot color drift
-            "--dot-i": i,
-          }}
-        />
-      ))}
-      {ripples.map((r) => (
-        <span
-          key={r.id}
-          className="click-ripple pointer-events-none fixed z-[69]"
-          style={{ left: r.x, top: r.y }}
-        />
-      ))}
-    </>
-  );
-}
-
-function RotatingRole() {
-  const roles = [
-    "Software Developer",
-    "UI/UX Designer",
-    "Frontend Developer",
-    "Product Designer",
-  ];
-
-  const [index, setIndex] = useState(0);
-  const [animating, setAnimating] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimating(true);
-
-      setTimeout(() => {
-        setIndex((prev) => (prev + 1) % roles.length);
-        setAnimating(false);
-      }, 500);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <span
-      className={`
-        relative inline-block min-w-[250px]
-        bg-gradient-to-r from-violet-400 via-fuchsia-400 to-blue-400
-        bg-clip-text text-transparent
-        transition-all duration-500
-        ${animating
-          ? "-translate-y-8 opacity-0 blur-sm"
-          : "translate-y-0 opacity-100 blur-0"}
-      `}
-    >
-      {roles[index]}
-    </span>
-  );
-}
-
-function TypingText() {
-  const text =
-    "Saya membangun pengalaman digital yang menggabungkan teknologi, desain, dan pemecahan masalah menjadi produk yang bermakna.";
-
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    let timeout: NodeJS.Timeout;
-
-    if (!isDeleting && displayText.length < text.length) {
-      // Mengetik
-      timeout = setTimeout(() => {
-        setDisplayText(text.slice(0, displayText.length + 1));
-      }, 35);
-    } else if (!isDeleting && displayText.length === text.length) {
-      // Jeda setelah selesai mengetik
-      timeout = setTimeout(() => {
-        setIsDeleting(true);
-      }, 2500);
-    } else if (isDeleting && displayText.length > 0) {
-      // Menghapus
-      timeout = setTimeout(() => {
-        setDisplayText(text.slice(0, displayText.length - 1));
-      }, 18);
-    } else if (isDeleting && displayText.length === 0) {
-      // Mulai mengetik lagi
-      setIsDeleting(false);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, text]);
-
-  return (
-    <span>
-      {displayText}
-      <span className="ml-1 inline-block animate-pulse text-violet-400">
-        |
-      </span>
-    </span>
-  );
-}
-
-/* ---------------- Page ---------------- */
+/* =========================================================
+   MAIN
+========================================================= */
 
 export default function Home() {
+  const [selectedCategory, setSelectedCategory] = useState<"Programming" | "UI/UX" | "Design">("Programming");
+
+  const scrollTo = (id: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#03030b] font-sans text-white">
-      <GlobalStyles />
-      <CursorEffects />
+    <main className="relative overflow-hidden bg-[#faf9f5] text-[#102a43]">
+      {/* Global Adaptive Dynamic Cursor */}
+      <GlobalCursor />
 
-      {/* Scanline overlay (static texture, no motion) */}
-      <div className="pointer-events-none fixed inset-0 z-40 scanlines opacity-[0.35] mix-blend-overlay" />
+      {/* =====================================================
+          NAVBAR
+      ===================================================== */}
 
-      {/* Animated aurora glow */}
-      <div className="pointer-events-none fixed inset-0 -z-0 overflow-hidden">
-        <div className="aurora aurora-one absolute -left-40 top-[10%] h-[520px] w-[520px] rounded-full bg-violet-600/15 blur-[140px]" />
-        <div className="aurora aurora-two absolute right-[-140px] top-[25%] h-[600px] w-[600px] rounded-full bg-blue-600/15 blur-[160px]" />
-        <div className="aurora aurora-three absolute left-[35%] top-[55%] h-[420px] w-[420px] rounded-full bg-violet-500/10 blur-[150px]" />
-      </div>
+      <nav className="fixed left-1/2 top-5 z-[70] w-[92%] max-w-6xl -translate-x-1/2">
+        <div className="flex items-center justify-between rounded-full border border-[#102a43]/10 bg-white/90 px-5 py-3 shadow-[0_10px_40px_rgba(16,42,67,0.08)] backdrop-blur-xl">
 
-      {/* Ambient breathing glow (fades in/out, keeps the background alive) */}
-      <div className="pointer-events-none fixed inset-0 -z-0 overflow-hidden">
-        <div className="glow-breathe absolute left-1/2 top-[8%] h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-violet-500/10 blur-[170px]" />
-        <div className="glow-breathe glow-breathe-delayed absolute right-[5%] top-[60%] h-[520px] w-[520px] rounded-full bg-blue-500/10 blur-[160px]" />
-        <div className="glow-breathe glow-breathe-slow absolute left-[8%] top-[120%] h-[560px] w-[560px] rounded-full bg-violet-400/10 blur-[170px]" />
-      </div>
+          <a
+            href="#home"
+            onClick={scrollTo("home")}
+            className="group flex items-center gap-2"
+          >
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#1677ff] font-black text-white transition duration-300 group-hover:rotate-12">
+              S
+            </span>
 
-      {/* Background glow */}
-      <div className="pointer-events-none fixed inset-0 -z-0 overflow-hidden">
-        <div className="absolute -left-40 top-20 h-96 w-96 rounded-full bg-violet-800/15 blur-[130px]" />
-        <div className="absolute right-[-120px] top-[520px] h-[520px] w-[520px] rounded-full bg-violet-700/10 blur-[150px]" />
-        <div className="absolute left-[38%] top-[1150px] h-80 w-80 rounded-full bg-blue-500/10 blur-[130px]" />
-        <div className="absolute right-[10%] top-[1900px] h-[420px] w-[420px] rounded-full bg-violet-700/10 blur-[140px]" />
-
-        {/* Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]" />
-      </div>
-
-      {/* Navbar */}
-      <nav className="site-nav fixed left-3/7 top-4 z-[60] mx-auto flex w-[calc(100%-2rem)] max-w-6xl -translate-x-1/2 items-center justify-between px-6 py-3.5">
-        <a href="#" className="font-mono text-xl font-bold tracking-tight">
-          Rifqi<span className="text-violet-400">_</span>
-        </a>
-
-        <div className="hidden items-center gap-7 font-mono text-sm text-zinc-400 lg:flex">
-          <a className="nav-link" href="#about">
-            About
+            <span className="text-lg font-black tracking-tight">
+              seant.
+            </span>
           </a>
-          <a className="nav-link" href="#education">
-            Education
-          </a>
-          <a className="nav-link" href="#experience">
-            Experience
-          </a>
-          <a className="nav-link" href="#projects">
-            Projects
-          </a>
-          <a className="nav-link" href="#skills">
-            Skills
-          </a>
-          <a className="nav-link" href="#certifications">
-            Certs
-          </a>
-          <a className="nav-link" href="#contact">
-            Contact
+
+          <div className="hidden items-center gap-7 text-sm font-semibold md:flex">
+            <a
+              href="#about"
+              onClick={scrollTo("about")}
+              className="transition hover:text-[#1677ff]"
+            >
+              About
+            </a>
+            <a
+              href="#skills"
+              onClick={scrollTo("skills")}
+              className="transition hover:text-[#1677ff]"
+            >
+              Skills
+            </a>
+            <a
+              href="#projects"
+              onClick={scrollTo("projects")}
+              className="transition hover:text-[#1677ff]"
+            >
+              Works
+            </a>
+            <a
+              href="#education"
+              onClick={scrollTo("education")}
+              className="transition hover:text-[#1677ff]"
+            >
+              Education
+            </a>
+            <a
+              href="#experience"
+              onClick={scrollTo("experience")}
+              className="transition hover:text-[#1677ff]"
+            >
+              Experience
+            </a>
+          </div>
+
+          <a
+            href="#collab"
+            onClick={scrollTo("collab")}
+            className="rounded-full bg-[#1677ff] px-5 py-2.5 text-sm font-black text-white shadow-[3px_3px_0_#102a43] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
+          >
+            Let's talk ↗
           </a>
         </div>
-
-        <a href="#contact" className="cta-glow hidden sm:inline-flex">
-          <IconSparkles className="h-3.5 w-3.5" />
-          <span>Let's Collaborate</span>
-        </a>
       </nav>
 
-      {/* Hero */}
-      <section className="relative z-10 mx-auto flex min-h-screen max-w-6xl items-center px-6 pb-20 pt-32">
-        <div className="grid w-full items-start gap-16 lg:grid-cols-[1.1fr_0.9fr]">
-          {/* Hero text */}
-          <div>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/5 px-4 py-2 font-mono text-sm text-violet-300 backdrop-blur">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-violet-400" />
-              status: available_for_projects
-            </div>
 
-            <p className="mb-4 font-mono text-lg text-blue-400">
-              &gt; const developer = {"{"}
-            </p>
+      {/* =====================================================
+          HERO — GRID (Cursor Theme: Orange)
+      ===================================================== */}
 
-            <h1 className="fluid-name max-w-3xl font-bold tracking-tight">
-              Muhammad 
-              <br />
-              <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-violet-400 bg-clip-text text-transparent" data-text="Rifqi">
-                Rifqi 
-              </span>
-              <span> Agus Setianto </span>
-            </h1>
+      <section
+        id="home"
+        data-cursor-theme="orange"
+        className="relative flex min-h-[90vh] items-center px-6 py-24 lg:px-12 lg:py-28 scroll-mt-24"
+      >
+        <GridBackground />
 
-            <p className="mt-2 font-mono text-lg text-blue-400">{"};"}</p>
-
-            <h2 className="mt-6 text-2xl font-semibold text-zinc-200">
-                <RotatingRole />
-            </h2>
-
-            <p className="mt-2 max-w-xl text-md leading-relaxed text-zinc-400">
-            <TypingText />
-            </p>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              <a
-                href="#projects"
-                className="group rounded-full bg-gradient-to-r from-violet-600 to-violet-700 px-7 py-3 font-medium shadow-lg shadow-violet-500/20 transition duration-300 hover:-translate-y-1 hover:shadow-violet-500/40"
-              >
-                Lihat Project
-                <span className="ml-2 transition group-hover:ml-3">→</span>
-              </a>
-            {/* hubungi saya */}
-            <a
-              href="#contact"
-              className="
-                group relative isolate inline-flex
-                overflow-hidden rounded-full
-                border border-zinc-700
-                px-7 py-3
-                font-medium text-zinc-300
-                transition-all duration-300
-                hover:border-violet-400/70
-                hover:text-white
-              "
-            >
-              {/* WATER */}
-              <span
-                className="
-                  pointer-events-none absolute
-                  inset-0 -z-10
-                  translate-y-full
-                  transition-transform duration-[2200ms]
-                  ease-[cubic-bezier(0.65,0,0.35,1)]
-                  group-hover:translate-y-0
-                "
-              >
-                {/* Wave 1 */}
-                <svg
-                  className="
-                    absolute -top-[1px] left-0
-                    h-full w-[200%]
-                    opacity-40
-                    animate-[wave1_7s_linear_infinite]
-                  "
-                  viewBox="0 0 1200 200"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="
-                      M0 80
-                      C50 40 100 40 150 80
-                      C200 120 250 120 300 80
-                      C350 40 400 40 450 80
-                      C500 120 550 120 600 80
-                      C650 40 700 40 750 80
-                      C800 120 850 120 900 80
-                      C950 40 1000 40 1050 80
-                      C1100 120 1150 120 1200 80
-                      L1200 200
-                      L0 200
-                      Z
-                    "
-                    fill="#3b82f6"
-                  />
-                </svg>
-
-                {/* Wave 2 */}
-                <svg
-                  className="
-                    absolute -top-[4px] left-0
-                    h-full w-[200%]
-                    opacity-45
-                    animate-[wave2_9s_linear_infinite]
-                  "
-                  viewBox="0 0 1200 200"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="
-                      M0 90
-                      C60 135 120 135 180 90
-                      C240 45 300 45 360 90
-                      C420 135 480 135 540 90
-                      C600 45 660 45 720 90
-                      C780 135 840 135 900 90
-                      C960 45 1020 45 1080 90
-                      C1140 135 1170 135 1200 110
-                      L1200 200
-                      L0 200
-                      Z
-                    "
-                    fill="#6366f1"
-                  />
-                </svg>
-
-                {/* Wave 3 */}
-                <svg
-                  className="
-                    absolute -top-[2px] left-0
-                    h-full w-[200%]
-                    opacity-55
-                    animate-[wave3_6s_linear_infinite]
-                  "
-                  viewBox="0 0 1200 200"
-                  preserveAspectRatio="none"
-                >
-                  <defs>
-                    <linearGradient
-                      id="waveGradient"
-                      x1="0%"
-                      y1="0%"
-                      x2="100%"
-                      y2="0%"
-                    >
-                      <stop offset="0%" stopColor="#7c3aed" />
-                      <stop offset="50%" stopColor="#a855f7" />
-                      <stop offset="100%" stopColor="#3b82f6" />
-                    </linearGradient>
-                  </defs>
-
-                  <path
-                    d="
-                      M0 75
-                      C40 25 80 25 120 75
-                      C160 125 200 125 240 75
-                      C280 25 320 25 360 75
-                      C400 125 440 125 480 75
-                      C520 25 560 25 600 75
-                      C640 125 680 125 720 75
-                      C760 25 800 25 840 75
-                      C880 125 920 125 960 75
-                      C1000 25 1040 25 1080 75
-                      C1120 125 1160 125 1200 75
-                      L1200 200
-                      L0 200
-                      Z
-                    "
-                    fill="url(#waveGradient)"
-                  />
-                </svg>
-
-                {/* Wave 4 — front */}
-                <svg
-                  className="
-                    absolute -top-[1px] left-0
-                    h-full w-[200%]
-                    opacity-90
-                    animate-[wave4_8s_linear_infinite]
-                  "
-                  viewBox="0 0 1200 200"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="
-                      M0 85
-                      C50 55 100 55 150 85
-                      C200 115 250 115 300 85
-                      C350 55 400 55 450 85
-                      C500 115 550 115 600 85
-                      C650 55 700 55 750 85
-                      C800 115 850 115 900 85
-                      C950 55 1000 55 1050 85
-                      C1100 115 1150 115 1200 85
-                      L1200 200
-                      L0 200
-                      Z
-                    "
-                    fill="#8b5cf6"
-                  />
-                </svg>
-              </span>
-
-              {/* Soft neon glow */}
-              <span
-                className="
-                  pointer-events-none absolute inset-0 -z-10
-                  bg-violet-500/20
-                  opacity-0 blur-xl
-                  transition-opacity duration-1000
-                  group-hover:opacity-100
-                "
-              />
-
-              {/* Text */}
-              <span className="relative z-10">
-                Hubungi Saya
-              </span>
-            </a>
-            </div>
-
-            {/* Social */}
-            <div className="mt-10 flex gap-5 font-mono text-sm text-zinc-500">
-              <a
-                className="transition hover:text-blue-400"
-                href={contactChannels[3].href}
-              >
-                GitHub
-              </a>
-              <a
-                className="transition hover:text-blue-400"
-                href={contactChannels[2].href}
-              >
-                LinkedIn
-              </a>
-              <a
-                className="transition hover:text-blue-400"
-                href={contactChannels[1].href}
-              >
-                Instagram
-              </a>
-            </div>
-          </div>
-
-          {/* hero img */}
-          <div className="relative mx-auto w-full max-w-sm mt-12">
-            <div className="aspect-square w-full">
-              <NeonFrame rounded="rounded-[28px]">
-                <img
-                  src="https://picsum.photos/seed/rifqi-hero/500/500"
-                  alt="Foto Muhammad Rifqi Setianto"
-                  className="block h-full w-full object-cover object-[center_80%]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#03030b]/70 via-violet-950/10 to-blue-500/10" />
-              </NeonFrame>
-            </div>
-
-            {/* Floating cards  */}
-            <div className="float-slow absolute -left-6 top-1/4 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 shadow-xl backdrop-blur-xl">
-              <p className="font-mono text-xs text-blue-200">focus</p>
-              <p className="mt-1 font-medium">Web & UI/UX</p>
-            </div>
-
-            <div className="float-slow-delayed absolute -right-6 bottom-1/4 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 shadow-xl backdrop-blur-xl">
-              <p className="font-mono text-xs text-purple-400">currently</p>
-              <p className="mt-1 font-medium">Building things</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Marquee ticker */}
-      <div className="relative z-10 border-y border-white/5 bg-white/[0.02] py-4">
-        <div className="marquee flex whitespace-nowrap font-mono text-sm text-zinc-500">
-          {[...skillNames, ...skillNames].map((name, i) => (
-            <span key={i} className="mx-6 flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-violet-500" />
-              {name}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* About */}
-      <section id="about" className="relative z-10 border-t border-white/5">
-        <div className="mx-auto grid max-w-6xl items-start gap-12 px-6 py-28 lg:grid-cols-[0.55fr_1fr]">
-          <Reveal>
-            <div className="mx-auto aspect-[4/5] w-full max-w-sm">
-              <NeonFrame rounded="rounded-3xl">
-                <img
-                  src="https://i.pravatar.cc/600?img=68"
-                  alt="Foto placeholder Muhammad Rifqi Setianto"
-                  className="block h-full w-full object-cover grayscale contrast-125"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#03030b] via-transparent to-violet-900/20" />
-                <div className="absolute bottom-4 left-4 rounded-full border border-blue-400/30 bg-black/50 px-3 py-1 font-mono text-xs text-blue-300 backdrop-blur">
-                  id: rifqi.dev
-                </div>
-              </NeonFrame>
-            </div>
-          </Reveal>
+        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[1.1fr_.9fr]">
 
           <div>
+
             <Reveal>
-              <p className="font-mono text-sm font-medium text-violet-400">
-                01 — <span className="text-blue-400">ABOUT</span>
-                <span className="cursor" />
-              </p>
-              <h2 className="fluid-h2 mt-4 font-bold">Tentang Saya</h2>
+              <div className="mb-7 inline-flex rotate-[-2deg] items-center gap-2 rounded-full border-2 border-[#102a43] bg-white px-4 py-2 text-xs font-black shadow-[4px_4px_0_#1677ff] animate-float">
+                <Sparkles size={14} className="text-[#1677ff]" />
+                INFORMATICS STUDENT × DESIGNER
+              </div>
+
+              <h1 className="text-[4.5rem] font-black leading-[.82] tracking-[-.07em] sm:text-[6rem] lg:text-[8rem]">
+                I BUILD
+                <br />
+
+                <span className="relative inline-block text-[#1677ff]">
+                  DIGITAL
+                  <span className="absolute -right-5 -top-5 text-3xl text-[#102a43] animate-spin-slow">
+                    ✦
+                  </span>
+                </span>
+
+                <br />
+
+                <span className="font-serif italic">
+                  things.
+                </span>
+              </h1>
             </Reveal>
 
-            <Reveal delay={100}>
-              <p className="mt-8 text-xl font-semibold leading-relaxed text-zinc-200">
-                Saya adalah mahasiswa Informatika yang tertarik pada
-                pengembangan web, UI/UX design, dan teknologi kreatif.
+            <Reveal delay={120}>
+              <p className="mt-9 max-w-xl text-lg leading-8 text-[#627d98]">
+                Hi, I'm{" "}
+                <span className="font-black text-[#102a43]">
+                  Seant
+                </span>
+                . I explore the space between{" "}
+                <span className="font-serif text-xl italic text-[#1677ff]">
+                  design
+                </span>
+                , code, and technology to create digital experiences.
               </p>
             </Reveal>
 
             <Reveal delay={200}>
-              <p className="mt-4 leading-relaxed text-zinc-500">
-                Saya menikmati proses mengubah ide yang masih abstrak menjadi
-                sesuatu yang bisa digunakan. Mulai dari riset masalah, membuat
-                desain, hingga membangun produk menggunakan teknologi modern.
+              <div className="mt-9 flex flex-wrap gap-4">
+
+                <a
+                  href="#projects"
+                  onClick={scrollTo("projects")}
+                  className="group flex items-center gap-3 rounded-full bg-[#1677ff] px-6 py-3.5 font-black text-white shadow-[5px_5px_0_#102a43] transition hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
+                >
+                  Explore my work
+
+                  <ArrowUpRight
+                    size={18}
+                    className="transition group-hover:rotate-45"
+                  />
+                </a>
+
+                <a
+                  href="#about"
+                  onClick={scrollTo("about")}
+                  className="flex items-center gap-2 rounded-full border-2 border-[#102a43] bg-white px-6 py-3.5 font-black shadow-[4px_4px_0_#102a43] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:bg-[#edf6ff]"
+                >
+                  Who am I?
+                </a>
+
+              </div>
+            </Reveal>
+
+          </div>
+
+
+          {/* HERO VISUAL */}
+
+          <div className="relative mx-auto h-[500px] w-full max-w-[500px]">
+
+            <div className="absolute right-4 top-12 h-[380px] w-[78%] rotate-[8deg] rounded-[42px] border-2 border-[#102a43] bg-[#d9ebff] transition duration-500 hover:rotate-6" />
+
+            <div className="absolute left-5 top-8 h-[400px] w-[78%] rotate-[-5deg] overflow-hidden rounded-[42px] border-2 border-[#102a43] bg-[#1677ff] shadow-[10px_10px_0_#102a43] transition duration-500 hover:rotate-[-2deg]">
+
+              <img
+                src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&w=900&q=85"
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover opacity-35 mix-blend-screen transition duration-700 hover:scale-105"
+              />
+
+              <div className="relative z-10 flex h-full flex-col justify-between p-7">
+
+                <div className="flex justify-between text-xs font-black text-white">
+                  <span>PORTFOLIO</span>
+                  <span>2026</span>
+                </div>
+
+                <div>
+                  <p className="font-serif text-2xl italic text-white">
+                    design × code
+                  </p>
+
+                  <p className="mt-1 text-6xl font-black tracking-[-.07em] text-white">
+                    SEANT.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+            <div className="absolute -right-2 top-1/2 flex h-24 w-24 -translate-y-1/2 rotate-12 items-center justify-center rounded-full border-2 border-[#102a43] bg-white text-center text-xs font-black shadow-[5px_5px_0_#102a43] animate-float">
+              LET'S
+              <br />
+              CREATE
+              <br />
+              ✦
+            </div>
+
+            <div className="absolute bottom-4 left-0 rotate-[-7deg] rounded-2xl border-2 border-[#102a43] bg-white px-4 py-3 shadow-[4px_4px_0_#1677ff] animate-float-delayed">
+              <div className="flex items-center gap-2 text-sm font-black">
+                <MapPin size={15} className="text-[#1677ff]" />
+                Indonesia
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs font-black text-[#829ab1] md:flex">
+          SCROLL
+          <ArrowDown size={15} className="animate-bounce" />
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          ABOUT — NO GRID (Cursor Theme: Blue)
+      ===================================================== */}
+
+      <section
+        id="about"
+        data-cursor-theme="blue"
+        className="relative bg-[#faf9f5] px-6 py-16 lg:px-12 lg:py-20 scroll-mt-24"
+      >
+        <div className="mx-auto max-w-7xl">
+
+          <div className="grid gap-12 lg:grid-cols-[.7fr_1.3fr]">
+
+            <Reveal>
+              <div>
+                <p className="text-xs font-black uppercase tracking-[.3em] text-[#1677ff]">
+                  01 — About me
+                </p>
+
+                <h2 className="mt-4 text-5xl font-black leading-[.9] tracking-[-.06em] md:text-6xl">
+                  A LITTLE
+                  <br />
+                  <span className="font-serif font-normal italic">
+                    bit
+                  </span>
+                  <br />
+                  about me.
+                </h2>
+              </div>
+            </Reveal>
+
+            <div className="pt-3">
+
+              <Reveal delay={100}>
+                <p className="max-w-4xl text-2xl font-semibold leading-[1.3] tracking-tight sm:text-3xl md:text-4xl">
+                  I like making things that are{" "}
+                  <span className="font-serif italic text-[#1677ff]">
+                    useful,
+                  </span>{" "}
+                  <span className="text-[#1677ff]">
+                    visual,
+                  </span>{" "}
+                  and a little bit{" "}
+                  <span className="font-serif italic">
+                    unexpected.
+                  </span>
+                </p>
+              </Reveal>
+
+              <Reveal delay={180}>
+                <p className="mt-6 max-w-2xl text-base leading-7 text-[#627d98] sm:text-lg sm:leading-8">
+                  I'm an Informatics student interested in UI/UX, frontend
+                  development and artificial intelligence. I enjoy understanding
+                  how things work from the fundamentals and then turning those
+                  ideas into something people can actually use.
+                </p>
+              </Reveal>
+
+              <Reveal delay={260}>
+                <div className="mt-9 flex flex-wrap gap-3">
+
+                  {[
+                    "Design systems",
+                    "Component architecture",
+                    "Creative coding",
+                    "Interaction design",
+                    "Exploratory AI",
+                  ].map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border-2 border-[#102a43] bg-white px-5 py-2.5 text-xs font-black shadow-[3px_3px_0_#102a43] transition hover:-translate-y-1 hover:bg-[#edf6ff]"
+                    >
+                      {item}
+                    </span>
+                  ))}
+
+                </div>
+              </Reveal>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* =====================================================
+          SKILLS — GRID (Cursor Theme: Orange)
+      ===================================================== */}
+
+      <section
+        id="skills"
+        data-cursor-theme="orange"
+        className="relative overflow-hidden bg-[#edf6ff] px-6 py-16 lg:px-12 lg:py-20 scroll-mt-24"
+      >
+        <GridBackground />
+
+        <div className="relative mx-auto max-w-7xl">
+
+          <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+
+            <Reveal>
+              <div>
+                <p className="text-xs font-black uppercase tracking-[.3em] text-[#1677ff]">
+                  02 — Stack & skills
+                </p>
+
+                <h2 className="mt-4 text-5xl font-black leading-[.9] tracking-[-.06em] md:text-6xl">
+                  TOOLS
+                  <br />
+                  <span className="font-serif font-normal italic">
+                    I use.
+                  </span>
+                </h2>
+              </div>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <p className="max-w-md text-base leading-7 text-[#627d98]">
+                A collection of technologies, design tools and frameworks that I
+                currently work with and continue to explore.
               </p>
             </Reveal>
 
-            <Reveal delay={300}>
-              <div className="mt-10 grid grid-cols-3 gap-4">
-                <Stat number="10+" label="Projects" />
-                <Stat number="5+" label="Technologies" />
-                <Stat number="∞" label="Ideas" accent="idea" />
-              </div>
-            </Reveal>
           </div>
-        </div>
-      </section>
 
-      {/* Education */}
-      <section id="education" className="relative z-10 border-t border-white/5">
-        <div className="mx-auto max-w-6xl px-6 py-28">
-          <Reveal>
-            <p className="font-mono text-sm font-medium text-violet-400">
-              02 — EDUCATION
-              <span className="cursor" />
-            </p>
-            <h2 className="fluid-h2 mt-4 font-bold">Riwayat Pendidikan</h2>
-          </Reveal>
 
-          <div className="relative mt-16 space-y-10 border-l border-white/10 pl-8">
-            {education.map((e, i) => (
-              <Reveal key={e.title} delay={i * 120}>
-                <div className="relative">
-                  <span className="absolute -left-[38px] top-1.5 h-3 w-3 rounded-full bg-blue-400 shadow-[0_0_12px_4px_rgba(59,130,246,0.5)]" />
-                  <p className="font-mono text-xs uppercase tracking-widest text-violet-400">
-                    {e.year}
-                  </p>
-                  <h3 className="mt-2 text-xl font-semibold">{e.title}</h3>
-                  <p className="mt-1 text-sm text-blue-300/80">{e.place}</p>
-                  <p className="mt-3 max-w-2xl leading-relaxed text-zinc-500">
-                    {e.description}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
-      {/* Experience / Timeline */}
-      <section id="experience" className="relative z-10 border-t border-white/5">
-        <div className="mx-auto max-w-6xl px-6 py-28">
-          <Reveal>
-            <p className="font-mono text-sm font-medium text-blue-400">
-              03 — EXPERIENCE<span className="cursor" />
-            </p>
-            <h2 className="fluid-h2 mt-4 font-bold">Riwayat Pengalaman</h2>
-          </Reveal>
+            {skills.map((skill, index) => {
+              const Icon = skill.icon;
 
-          <div className="relative mt-16 space-y-10 border-l border-white/10 pl-8">
-            {experience.map((e, i) => (
-              <Reveal key={e.title} delay={i * 120}>
-                <div className="relative">
-                  <span className="absolute -left-[38px] top-1.5 h-3 w-3 rounded-full bg-violet-400 shadow-[0_0_12px_4px_rgba(139,92,246,0.5)]" />
-                  <p className="font-mono text-xs uppercase tracking-widest text-blue-400">
-                    {e.year}
-                  </p>
-                  <h3 className="mt-2 text-xl font-semibold">{e.title}</h3>
-                  <p className="mt-1 text-sm text-violet-300/80">{e.place}</p>
-                  <p className="mt-3 max-w-2xl leading-relaxed text-zinc-500">
-                    {e.description}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Projects */}
-      <section id="projects" className="relative z-10 border-t border-white/5">
-        <div className="mx-auto max-w-6xl px-6 py-28">
-          <Reveal>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p className="font-mono text-sm font-medium text-violet-400">
-                  04 — PROJECTS<span className="cursor" />
-                </p>
-                <h2 className="fluid-h2 mt-4 font-bold">Projek Portofolio</h2>
-              </div>
-              <span className="hidden font-mono text-sm text-zinc-500 md:block">
-                selected_works ↗
-              </span>
-            </div>
-          </Reveal>
-
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project, index) => (
-              <Reveal key={project.title} delay={index * 90}>
-                <ProjectCard project={project} index={index} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Skills */}
-      <section id="skills" className="relative z-10 border-t border-white/5">
-        <div className="mx-auto max-w-6xl px-6 py-28">
-          <Reveal>
-            <p className="font-mono text-sm font-medium text-blue-400">
-              05 — SKILLS<span className="cursor" />
-            </p>
-            <h2 className="fluid-h2 mt-4 font-bold">Tools & Skill</h2>
-          </Reveal>
-
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {skillCategories.map((cat, ci) => (
-              <Reveal key={cat.category} delay={ci * 100}>
-                <SkillPanel category={cat} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Sertifikasi */}
-      <section
-        id="certifications"
-        className="relative z-10 border-t border-white/5"
-      >
-        <div className="mx-auto max-w-6xl px-6 py-28">
-          <Reveal>
-            <p className="font-mono text-sm font-medium text-violet-400">
-              06 — CERTIFICATIONS
-              <span className="cursor" />
-            </p>
-            <h2 className="fluid-h2 mt-4 font-bold">
-              Sertifikasi & Pencapaian
-            </h2>
-          </Reveal>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {certifications.map((cert, i) => {
-              const accents = [
-                { text: "text-violet-300", from: "from-violet-500", border: "hover:border-violet-400/40" },
-                { text: "text-blue-300", from: "from-blue-500", border: "hover:border-blue-400/40" },
-                { text: "text-emerald-300", from: "from-emerald-500", border: "hover:border-emerald-400/40" },
-              ];
-              const a = accents[i % accents.length];
               return (
-                <Reveal key={cert.title} delay={i * 100}>
-                  <div
-                    className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.035] shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_20px_60px_rgba(0,0,0,0.2)] backdrop-blur-xl transition duration-300 hover:-translate-y-1.5 ${a.border}`}
-                  >
-                    <div className="relative aspect-[16/10] w-full overflow-hidden">
-                      <img
-                        src={cert.image}
-                        alt={`Sertifikat ${cert.title}`}
-                        className="block h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#03030b] via-[#03030b]/15 to-transparent" />
-                      <span className={`absolute left-4 top-4 rounded-full border border-white/10 bg-black/50 px-3 py-1 font-mono text-[10px] uppercase tracking-widest ${a.text} backdrop-blur`}>
-                        Certificate
-                      </span>
-                      <span className="absolute bottom-3 right-3 rounded-full border border-white/10 bg-black/60 px-2.5 py-1 font-mono text-[11px] text-zinc-300 backdrop-blur">
-                        {cert.year}
+                <Reveal key={skill.name} delay={index * 80}>
+                  <div className="group relative rounded-[28px] border-2 border-[#102a43] bg-white p-7 shadow-[6px_6px_0_#102a43] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[10px_10px_0_#1677ff]">
+
+                    <div className="flex items-start justify-between">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#edf6ff] text-[#1677ff] transition duration-300 group-hover:bg-[#1677ff] group-hover:text-white group-hover:rotate-12 group-hover:scale-110">
+                        <Icon size={22} />
+                      </div>
+
+                      <span className="font-mono text-xs font-black text-[#829ab1]">
+                        {skill.number}
                       </span>
                     </div>
 
-                    <div className={`h-[3px] w-full bg-gradient-to-r ${a.from} to-transparent opacity-70`} />
+                    <h3 className="mt-6 text-xl font-black">
+                      {skill.name}
+                    </h3>
 
-                    <div className="flex flex-1 flex-col justify-center p-6">
-                      <h3 className="font-semibold leading-snug text-zinc-100">
-                        {cert.title}
-                      </h3>
-                      <p className={`mt-2 font-mono text-xs uppercase tracking-widest ${a.text}`}>
-                        {cert.issuer}
-                      </p>
-                    </div>
+                    <p className="mt-3 text-sm leading-6 text-[#627d98]">
+                      {skill.description}
+                    </p>
+
                   </div>
                 </Reveal>
               );
             })}
-          </div>
-        </div>
-      </section>
 
-      {/* kontak */}
-      <section id="contact" className="relative z-10 border-t border-white/5">
-        <div className="mx-auto max-w-6xl px-6 py-32">
-          <Reveal>
-            <p className="font-mono text-sm font-medium text-blue-400">
-              07 — CONTACT
-              <span className="cursor" />
-            </p>
-            <div className="mt-4 flex flex-wrap items-center gap-4">
-              <h2 className="fluid-h2 font-bold">Punya ide menarik?</h2>
+          </div>
+
+
+          <Reveal delay={200}>
+            <div className="mt-12 rounded-[30px] border-2 border-[#102a43] bg-white p-8 shadow-[6px_6px_0_#102a43]">
+
+              <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+
+                <div className="flex items-center gap-4">
+
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1677ff] text-white animate-float">
+                    <Terminal size={26} />
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-black">
+                      Always exploring new technologies
+                    </h3>
+
+                    <p className="text-sm text-[#627d98]">
+                      Currently diving deeper into machine learning models, system
+                      architecture and modern interface design.
+                    </p>
+                  </div>
+
+                </div>
+
+                <a
+                  href="#collab"
+                  onClick={scrollTo("collab")}
+                  className="rounded-full bg-[#1677ff] px-6 py-3 text-sm font-black text-white shadow-[4px_4px_0_#102a43] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
+                >
+                  Start a conversation ↗
+                </a>
+
+              </div>
 
             </div>
           </Reveal>
 
-          <Reveal delay={100}>
-            <div className="relative mt-12 grid gap-10 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.035] p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur-xl md:grid-cols-2 md:p-14">
-              <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-violet-600/15 blur-[110px]" />
-              <div className="pointer-events-none absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-blue-600/10 blur-[110px]" />
+        </div>
+      </section>
 
-              <div className="relative flex flex-col justify-between gap-10">
-                <p className="max-w-md text-lg leading-relaxed text-zinc-400">
-                  Saya selalu terbuka untuk berdiskusi mengenai project,
-                  kolaborasi, atau sekadar bertukar ide. Kirim pesan dan
-                  saya akan balas secepatnya.
+
+      {/* =====================================================
+          PROJECTS — NO GRID (Cursor Theme: Blue)
+      ===================================================== */}
+
+      <section
+        id="projects"
+        data-cursor-theme="blue"
+        className="relative bg-[#faf9f5] px-6 py-16 lg:px-12 lg:py-20 scroll-mt-24"
+      >
+        <div className="mx-auto max-w-7xl">
+
+          <div className="mb-14 flex flex-col justify-between gap-6 sm:flex-row sm:items-start">
+
+            <Reveal>
+              <div>
+                <p className="text-xs font-black uppercase tracking-[.3em] text-[#1677ff]">
+                  03 — Selected works
                 </p>
 
-                <a href={contactChannels[0].href} className="cta-glow w-fit">
-                  <IconSparkles className="h-3.5 w-3.5" />
-                  <span>Let's Collaborate</span>
+                <h2 className="mt-4 text-5xl font-black leading-[.9] tracking-[-.06em] md:text-6xl lg:text-7xl">
+                  THINGS I'VE
+                  <br />
+                  <span className="font-serif font-normal italic text-[#1677ff]">
+                    made.
+                  </span>
+                </h2>
+
+                {/* Category Filter Tabs */}
+                <div className="mt-7 flex flex-wrap gap-2.5">
+                  {(["Programming", "UI/UX", "Design"] as const).map((cat) => (
+                    <button
+                      key={cat}
+                      onClick={() => setSelectedCategory(cat)}
+                      type="button"
+                      className={`rounded-full px-5 py-2.5 text-xs font-black transition-all duration-200 ${
+                        selectedCategory === cat
+                          ? "bg-[#1677ff] text-white shadow-[3px_3px_0_#102a43] -translate-y-0.5"
+                          : "border-2 border-[#102a43] bg-white text-[#102a43] hover:bg-[#edf6ff] shadow-[2px_2px_0_#102a43]"
+                      }`}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Elevated "Lihat Semua Projek" Button */}
+            <Reveal delay={150}>
+              <div className="sm:pt-1">
+                <a
+                  href="/project"
+                  className="group inline-flex items-center gap-2.5 rounded-full border-2 border-[#102a43] bg-white px-5 py-3 text-sm font-black text-[#102a43] shadow-[4px_4px_0_#1677ff] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none hover:bg-[#edf6ff]"
+                >
+                  <span>Lihat Semua Projek</span>
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#1677ff] text-white transition duration-300 group-hover:rotate-45">
+                    <ArrowUpRight size={15} />
+                  </span>
                 </a>
               </div>
+            </Reveal>
 
-              <div className="relative flex flex-col gap-3">
-                {contactChannels.map((c) => {
-                  const Icon = c.icon;
-                  return (
-                    <a
-                      key={c.label}
-                      href={c.href}
-                      className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.035] px-5 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_20px_60px_rgba(0,0,0,0.18)] backdrop-blur-xl transition duration-300 hover:border-violet-500/40 hover:bg-violet-500/5"
-                    >
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-violet-400/30 bg-gradient-to-br from-violet-500/20 to-blue-500/10 text-violet-300 transition duration-300 group-hover:scale-110 group-hover:text-blue-300">
-                        <Icon className="h-5 w-5" />
+          </div>
+
+
+          {/* PROGRAMMING CATEGORY — BENTO GRID CARDS */}
+          {selectedCategory === "Programming" && (
+            <div className="space-y-16">
+              {programmingProjects.map((project, index) => (
+                <article
+                  key={project.title}
+                  className="group grid items-center gap-10 lg:grid-cols-[1.15fr_.85fr]"
+                >
+                  {/* BENTO GRID IMAGES CONTAINER — UKURAN ORIGINAL (h-[390px]) */}
+                  <div
+                    className={`relative h-[390px] w-full overflow-hidden rounded-[35px] border-2 border-[#102a43] bg-white shadow-[8px_8px_0_#102a43] ${
+                      index % 2 === 1 ? "lg:order-2" : ""
+                    }`}
+                  >
+                    {/* BENTO IMAGE TANPA MARGIN / GAP — TIAP GAMBAR NEMPEL */}
+                    <div className="grid h-full w-full grid-cols-12 gap-0">
+                      {/* Tile Kiri / Utama */}
+                      <div className="relative col-span-7 h-full overflow-hidden border-r-2 border-[#102a43]">
+                        <img
+                          src={project.images[0]}
+                          alt={`${project.title} 1`}
+                          className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                        />
                       </div>
-                      <div className="flex-1">
-                        <p className="font-mono text-[11px] uppercase tracking-widest text-blue-400">
-                          {c.label}
-                        </p>
-                        <p className="mt-1 text-sm text-zinc-300">{c.value}</p>
+
+                      {/* Tile Kanan / Stacked */}
+                      <div className="col-span-5 grid h-full grid-rows-2 gap-0">
+                        <div className="relative h-full overflow-hidden border-b-2 border-[#102a43]">
+                          <img
+                            src={project.images[1]}
+                            alt={`${project.title} 2`}
+                            className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                          />
+                        </div>
+                        <div className="relative h-full overflow-hidden">
+                          <img
+                            src={project.images[2]}
+                            alt={`${project.title} 3`}
+                            className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                          />
+                        </div>
                       </div>
-                      <IconArrowUpRight className="h-4 w-4 text-zinc-500 transition group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-violet-300" />
-                    </a>
-                  );
-                })}
-              </div>
+                    </div>
+
+                    {/* Floating Badges */}
+                    <div className="absolute left-5 top-5 rounded-full border-2 border-[#102a43] bg-white px-4 py-2 text-xs font-black shadow-[2px_2px_0_#102a43]">
+                      {project.number}
+                    </div>
+
+                    <div className="absolute bottom-5 left-5 rounded-full bg-[#1677ff] px-4 py-2 text-xs font-black text-white shadow-[2px_2px_0_#102a43]">
+                      {project.category}
+                    </div>
+                  </div>
+
+                  {/* PROJECT INFO */}
+                  <div className={index % 2 === 1 ? "lg:order-1" : ""}>
+                    <Reveal delay={index * 60 + 80}>
+                      <div className="mb-5 flex h-14 w-14 rotate-[-8deg] items-center justify-center rounded-2xl border-2 border-[#102a43] bg-white shadow-[4px_4px_0_#1677ff]">
+                        {index === 0 ? (
+                          <Layers3 size={23} />
+                        ) : index === 1 ? (
+                          <Sparkles size={23} />
+                        ) : (
+                          <Zap size={23} />
+                        )}
+                      </div>
+
+                      <h3 className="text-4xl font-black tracking-[-.05em] sm:text-5xl">
+                        {project.title}
+                      </h3>
+
+                      <p className="mt-5 max-w-lg text-lg leading-8 text-[#627d98]">
+                        {project.description}
+                      </p>
+
+                      <div className="mt-6 flex flex-wrap gap-2">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full border-2 border-[#102a43] bg-white px-4 py-2 text-xs font-black shadow-[2px_2px_0_#102a43]"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      <a
+                        href="/project"
+                        className="group/btn mt-8 inline-flex items-center gap-3 font-black text-[#102a43] transition hover:text-[#1677ff]"
+                      >
+                        <span>View project</span>
+                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1677ff] text-white transition group-hover/btn:rotate-45">
+                          <ArrowUpRight size={18} />
+                        </span>
+                      </a>
+                    </Reveal>
+                  </div>
+                </article>
+              ))}
             </div>
-          </Reveal>
+          )}
+
+
+          {/* UI/UX & DESIGN CATEGORIES — SIMPLE CLEAN CARDS */}
+          {selectedCategory !== "Programming" && (
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {(selectedCategory === "UI/UX" ? uiuxProjects : designProjects).map((item, idx) => (
+                <Reveal key={item.title} delay={idx * 90}>
+                  <div className="group flex h-full flex-col overflow-hidden rounded-[28px] border-2 border-[#102a43] bg-white shadow-[6px_6px_0_#102a43] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[8px_8px_0_#1677ff]">
+                    {/* Featured Mockup Preview */}
+                    <div className="relative h-56 w-full overflow-hidden border-b-2 border-[#102a43] bg-[#edf6ff]">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute left-4 top-4 rounded-full border-2 border-[#102a43] bg-white px-3 py-1 text-xs font-black shadow-[2px_2px_0_#102a43]">
+                        {item.number}
+                      </div>
+                      <div className="absolute bottom-4 left-4 rounded-full bg-[#1677ff] px-3 py-1 text-[11px] font-black text-white shadow-[2px_2px_0_#102a43]">
+                        {item.category}
+                      </div>
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="flex flex-1 flex-col justify-between p-6">
+                      <div>
+                        <h3 className="text-2xl font-black tracking-tight group-hover:text-[#1677ff] transition">
+                          {item.title}
+                        </h3>
+                        <p className="mt-2.5 text-sm leading-6 text-[#627d98]">
+                          {item.description}
+                        </p>
+
+                        <div className="mt-4 flex flex-wrap gap-1.5">
+                          {item.tags.map((t) => (
+                            <span
+                              key={t}
+                              className="rounded-full border border-[#102a43]/20 bg-[#edf6ff] px-3 py-1 text-[11px] font-bold text-[#102a43]"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <a
+                        href="/project"
+                        className="mt-6 inline-flex items-center gap-2 text-xs font-black text-[#102a43] transition hover:text-[#1677ff]"
+                      >
+                        <span>View project details</span>
+                        <ArrowUpRight size={15} className="transition duration-300 group-hover:rotate-45" />
+                      </a>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          )}
+
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-white/5">
-        <div className="mx-auto max-w-6xl px-6 py-16">
-          <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr_1fr]">
+
+      {/* =====================================================
+          EDUCATION — GRID (Cursor Theme: Orange)
+      ===================================================== */}
+
+      <section
+        id="education"
+        data-cursor-theme="orange"
+        className="relative overflow-hidden bg-[#edf6ff] px-6 py-16 lg:px-12 lg:py-20 scroll-mt-24"
+      >
+        <GridBackground />
+
+        <div className="relative mx-auto max-w-7xl">
+
+          <div className="grid items-center gap-12 lg:grid-cols-[.9fr_1.1fr]">
+
             <div>
-              <a href="#" className="font-mono text-xl font-bold tracking-tight">
-                Rifqi<span className="text-violet-400">_</span>
+
+              <Reveal>
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[.3em] text-[#1677ff]">
+                    04 — Education
+                  </p>
+
+                  <h2 className="mt-4 text-5xl font-black leading-[.85] tracking-[-.06em] md:text-6xl">
+                    WHERE
+                    <br />
+                    I{" "}
+                    <span className="font-serif font-normal italic">
+                      learn.
+                    </span>
+                  </h2>
+                </div>
+              </Reveal>
+
+              <Reveal delay={160}>
+                <div className="mt-8 border-l-2 border-[#1677ff] pl-5">
+
+                  <p className="text-[11px] font-black tracking-[.2em] text-[#1677ff]">
+                    2025 — PRESENT
+                  </p>
+
+                  <h3 className="mt-2 text-xl font-black sm:text-2xl">
+                    Informatics
+                  </h3>
+
+                  <p className="mt-1 text-sm font-bold text-[#486581] sm:text-base">
+                    Universitas Jenderal Soedirman
+                  </p>
+
+                  <p className="mt-3 max-w-md text-sm leading-6 text-[#627d98]">
+                    Exploring software development, system analysis, artificial
+                    intelligence, UI/UX, databases and computer fundamentals.
+                  </p>
+
+                </div>
+              </Reveal>
+
+            </div>
+
+            <ImageSlideshow images={educationImages} />
+
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* =====================================================
+          EXPERIENCE — NO GRID (Cursor Theme: Blue)
+      ===================================================== */}
+
+      <section
+        id="experience"
+        data-cursor-theme="blue"
+        className="bg-[#faf9f5] px-6 py-16 lg:px-12 lg:py-20 scroll-mt-24"
+      >
+        <div className="mx-auto max-w-7xl">
+
+          <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_.9fr]">
+
+            <ImageSlideshow images={experienceImages} />
+
+            <div>
+
+              <Reveal>
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[.3em] text-[#1677ff]">
+                    05 — Experience
+                  </p>
+
+                  <h2 className="mt-4 text-5xl font-black leading-[.85] tracking-[-.06em] md:text-6xl">
+                    WHAT
+                    <br />
+                    I'VE{" "}
+                    <span className="font-serif font-normal italic text-[#1677ff]">
+                      been
+                    </span>
+                    <br />
+                    doing.
+                  </h2>
+                </div>
+              </Reveal>
+
+              <div className="mt-8 space-y-6">
+
+                <Reveal delay={120}>
+                  <div className="relative border-l-2 border-[#b9d9ff] pl-5">
+
+                    <div className="absolute -left-[7px] top-1.5 h-3 w-3 rounded-full border-2 border-[#1677ff] bg-white" />
+
+                    <p className="text-[11px] font-black tracking-[.2em] text-[#1677ff]">
+                      2026 — NOW
+                    </p>
+
+                    <h3 className="mt-1 text-lg font-black sm:text-xl">
+                      Media Communication & Information
+                    </h3>
+
+                    <p className="text-xs font-bold text-[#486581] sm:text-sm">
+                      HMIF UNSOED
+                    </p>
+
+                    <p className="mt-2 text-xs leading-5 text-[#627d98] sm:text-sm sm:leading-6">
+                      Working on visual communication, digital content and
+                      creative media for Informatics students.
+                    </p>
+
+                  </div>
+                </Reveal>
+
+                <Reveal delay={200}>
+                  <div className="relative border-l-2 border-[#b9d9ff] pl-5">
+
+                    <div className="absolute -left-[7px] top-1.5 h-3 w-3 rounded-full border-2 border-[#1677ff] bg-white" />
+
+                    <p className="text-[11px] font-black tracking-[.2em] text-[#1677ff]">
+                      2026
+                    </p>
+
+                    <h3 className="mt-1 text-lg font-black sm:text-xl">
+                      UI/UX Designer
+                    </h3>
+
+                    <p className="text-xs font-bold text-[#486581] sm:text-sm">
+                      BSO Catalyst
+                    </p>
+
+                    <p className="mt-2 text-xs leading-5 text-[#627d98] sm:text-sm sm:leading-6">
+                      Exploring user interface and experience design while
+                      developing practical digital products.
+                    </p>
+
+                  </div>
+                </Reveal>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* =====================================================
+          LET'S COLLAB — FULL FLOWING DYNAMIC WHITE RIBBONS & ENGAGING LAYOUT
+      ===================================================== */}
+
+      <section
+        id="collab"
+        data-cursor-theme="light"
+        className="relative overflow-hidden bg-[#1677ff] px-6 py-20 lg:px-12 lg:py-28 scroll-mt-24"
+      >
+        {/* Subtle grid pattern background */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-15"
+          style={{
+            backgroundImage:
+              "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
+            backgroundSize: "42px 42px",
+          }}
+        />
+
+        {/* Dynamic Full-Canvas Flowing Solid White Ribbons (Bold, fluid, no collision) */}
+        <svg
+          className="pointer-events-none absolute inset-0 h-full w-full opacity-20 animate-ribbon"
+          viewBox="0 0 1440 700"
+          fill="none"
+          preserveAspectRatio="none"
+        >
+          {/* Upper flowing wave ribbon across canvas */}
+          <path
+            d="M -80 180 C 260 320, 520 80, 840 240 C 1120 380, 1320 120, 1520 180"
+            stroke="#ffffff"
+            strokeWidth="62"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+
+          {/* Lower flowing wave ribbon across canvas */}
+          <path
+            d="M -80 540 C 280 400, 620 620, 960 440 C 1220 320, 1380 580, 1520 500"
+            stroke="#ffffff"
+            strokeWidth="54"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+
+          {/* Top-Right accent ribbon curl */}
+          <path
+            d="M 1120 -60 C 1260 140, 1420 80, 1520 -40"
+            stroke="#ffffff"
+            strokeWidth="44"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+
+        <div className="relative mx-auto max-w-4xl text-center">
+
+          {/* Top Pill / Badge */}
+          <Reveal>
+            <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-black tracking-wide text-white backdrop-blur-md shadow-[3px_3px_0_rgba(16,42,67,0.15)]">
+              <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>06 — AVAILABLE FOR FREELANCE & COLLABORATIONS</span>
+            </div>
+          </Reveal>
+
+          {/* Main Headline */}
+          <Reveal delay={100}>
+            <h2 className="text-5xl font-black leading-[.9] tracking-[-.06em] text-white sm:text-7xl md:text-8xl">
+              HAVE AN
+              <br />
+              <span className="relative inline-block font-serif font-normal italic">
+                idea?
+                {/* Hand-drawn smooth white wave underline */}
+                <svg
+                  className="absolute -bottom-3.5 left-0 w-full overflow-visible"
+                  height="18"
+                  viewBox="0 0 160 18"
+                  fill="none"
+                >
+                  <path
+                    d="M 4 13 Q 40 2, 80 12 T 156 9"
+                    stroke="#ffffff"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+            </h2>
+          </Reveal>
+
+          {/* Description */}
+          <Reveal delay={180}>
+            <p className="mx-auto mt-8 max-w-xl text-base leading-7 text-white/90 sm:text-lg sm:leading-8">
+              Whether you need an intuitive website, responsive product interface,
+              interactive design experiment, or custom frontend development — let's build something memorable together.
+            </p>
+          </Reveal>
+
+          {/* Capability Grid / Pills */}
+          <Reveal delay={240}>
+            <div className="mt-8 flex flex-wrap justify-center gap-2.5">
+              {[
+                "✦ UI/UX Design",
+                "✦ Frontend Engineering",
+                "✦ Interactive Websites",
+                "✦ Design Systems",
+                "✦ AI & Machine Learning",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition duration-300 hover:bg-white/20 hover:-translate-y-0.5"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+
+          {/* Action Button at the very bottom */}
+          <Reveal delay={300}>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="mailto:hello@example.com"
+                className="group inline-flex items-center gap-3 rounded-full border-2 border-[#102a43] bg-white px-8 py-4 text-base font-black text-[#102a43] shadow-[6px_6px_0_#102a43] transition hover:translate-x-1 hover:translate-y-1 hover:shadow-none hover:bg-[#edf6ff]"
+              >
+                <Mail size={19} />
+                <span>Let's talk</span>
+                <ArrowUpRight size={19} className="transition duration-300 group-hover:rotate-45" />
               </a>
-              <p className="mt-4 max-w-xs text-sm leading-relaxed text-zinc-500">
-                Developer & designer yang senang mengubah ide menjadi produk
-                digital yang bermakna.
-              </p>
-              <p className="mt-4 font-mono text-xs text-zinc-600">
-                Berbasis di Indonesia
-              </p>
-            </div>
 
+              <a
+                href="https://wa.me"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white/40 bg-white/10 px-6 py-4 text-sm font-black text-white backdrop-blur-md transition hover:bg-white/20 hover:border-white"
+              >
+                <span>Chat on WhatsApp</span>
+                <ArrowUpRight size={16} />
+              </a>
+            </div>
+          </Reveal>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          FOOTER — CLEAN, CONCISE & COMPACT (NO GRID, NOT TOO LONG)
+      ===================================================== */}
+
+      <footer
+        data-cursor-theme="light"
+        className="border-t-2 border-[#102a43] bg-[#0c1f38] px-6 py-12 text-white lg:px-12"
+      >
+        <div className="mx-auto max-w-7xl">
+
+          {/* Main Footer Row */}
+          <div className="flex flex-col justify-between gap-8 md:flex-row md:items-center">
+
+            {/* Brand & Tagline */}
             <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-blue-400">
-                Navigasi
-              </p>
-              <div className="mt-4 flex flex-col gap-2 text-sm text-zinc-500">
-                <a className="transition hover:text-white" href="#about">
-                  About
-                </a>
-                <a className="transition hover:text-white" href="#education">
-                  Education
-                </a>
-                <a className="transition hover:text-white" href="#projects">
-                  Projects
-                </a>
-                <a className="transition hover:text-white" href="#contact">
-                  Contact
-                </a>
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#1677ff] text-lg font-black text-white shadow-[3px_3px_0_#ffffff]">
+                  S
+                </span>
+                <span className="text-3xl font-black tracking-tight">seant.</span>
               </div>
+              <p className="mt-2 text-xs text-white/60">
+                Informatics Student, UI/UX & Frontend Developer · Indonesia 🇮🇩
+              </p>
             </div>
 
-            <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-violet-400">
-                Terhubung
-              </p>
-              <div className="mt-4 flex flex-col gap-2 text-sm text-zinc-500">
-                {contactChannels.map((c) => (
+            {/* Quick Navigation Links */}
+            <div className="flex flex-wrap items-center gap-6 text-xs font-bold text-white/80">
+              <a href="#about" onClick={scrollTo("about")} className="transition hover:text-[#69b1ff]">About</a>
+              <a href="#skills" onClick={scrollTo("skills")} className="transition hover:text-[#69b1ff]">Skills</a>
+              <a href="#projects" onClick={scrollTo("projects")} className="transition hover:text-[#69b1ff]">Works</a>
+              <a href="#education" onClick={scrollTo("education")} className="transition hover:text-[#69b1ff]">Education</a>
+              <a href="#experience" onClick={scrollTo("experience")} className="transition hover:text-[#69b1ff]">Experience</a>
+              <a href="/project" className="transition hover:text-[#69b1ff]">All Projects ↗</a>
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-2.5">
+              {[
+                { name: "GitHub", href: "https://github.com", icon: GithubIcon },
+                { name: "LinkedIn", href: "https://linkedin.com", icon: LinkedinIcon },
+                { name: "Instagram", href: "https://instagram.com", icon: InstagramIcon },
+                { name: "Figma", href: "https://figma.com", icon: Figma },
+                { name: "WhatsApp", href: "https://wa.me", icon: WhatsappIcon },
+              ].map((soc) => {
+                const Icon = soc.icon;
+                return (
                   <a
-                    key={c.label}
-                    href={c.href}
-                    className="transition hover:text-white"
+                    key={soc.name}
+                    href={soc.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={soc.name}
+                    className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white/80 transition hover:border-[#1677ff] hover:bg-[#1677ff] hover:text-white"
                   >
-                    {c.label} — {c.value}
+                    <Icon size={16} />
                   </a>
-                ))}
-              </div>
+                );
+              })}
             </div>
+
           </div>
 
-          <div className="mt-12 flex flex-col gap-3 border-t border-white/5 pt-6 font-mono text-xs text-zinc-600 sm:flex-row sm:items-center sm:justify-between">
-            <span>© 2026 Rifqi Setianto. Seluruh hak cipta dilindungi.</span>
-            <span>Dibangun dengan Next.js & Tailwind CSS</span>
+          {/* Bottom Bar: Copyright & Back to Top */}
+          <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-white/45 sm:flex-row">
+            <p>© 2026 Muhammad Rifqi (Seant). All rights reserved.</p>
+
+            <button
+              onClick={scrollTo("home")}
+              type="button"
+              className="group inline-flex items-center gap-1.5 font-bold text-white/70 transition hover:text-white"
+            >
+              <span>Back to Top</span>
+              <ChevronUp size={14} className="transition group-hover:-translate-y-0.5" />
+            </button>
           </div>
+
         </div>
       </footer>
+
     </main>
-  );
-}
-
-/* ---------------- Components ---------------- */
-
-function Stat({
-  number,
-  label,
-  accent = "default",
-}: {
-  number: string;
-  label: string;
-  accent?: "default" | "idea";
-}) {
-  return (
-    <div
-      className={`rounded-2xl border p-5 transition duration-300 ${
-        accent === "idea"
-          ? "border-blue-400/25 bg-blue-400/[0.06] hover:border-blue-400/50"
-          : "border-white/10 bg-white/[0.03] hover:border-violet-400/30"
-      }`}
-    >
-      <CountUp target={number} />
-      <p
-        className={`mt-1 text-sm ${
-          accent === "idea" ? "text-blue-300/80" : "text-zinc-500"
-        }`}
-      >
-        {label}
-      </p>
-    </div>
-  );
-}
-
-function SkillPanel({
-  category,
-}: {
-  category: {
-    category: string;
-    accent: string;
-    items: { name: string; badge: string }[];
-  };
-}) {
-  const accentMap: Record<string, { text: string; border: string; bg: string; glow: string }> = {
-    violet: {
-      text: "text-violet-300",
-      border: "border-violet-400/30",
-      bg: "bg-violet-400/10",
-      glow: "hover:border-violet-400/40 hover:bg-violet-500/[0.04]",
-    },
-    blue: {
-      text: "text-blue-300",
-      border: "border-blue-400/30",
-      bg: "bg-blue-400/10",
-      glow: "hover:border-blue-400/40 hover:bg-blue-500/[0.04]",
-    },
-    emerald: {
-      text: "text-emerald-300",
-      border: "border-emerald-400/30",
-      bg: "bg-emerald-400/10",
-      glow: "hover:border-emerald-400/40 hover:bg-emerald-500/[0.04]",
-    },
-  };
-  const a = accentMap[category.accent] ?? accentMap.violet;
-
-  return (
-    <div className={`relative h-full rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl transition duration-300 ${a.glow}`}>
-      <div className={`absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-current to-transparent opacity-40 ${a.text}`} />
-      <p className={`font-mono text-xs uppercase tracking-[0.3em] ${a.text}`}>
-        {category.category}
-      </p>
-      <div className="mt-6 flex flex-col gap-2.5">
-        {category.items.map((skill) => (
-          <div
-            key={skill.name}
-            className="group flex items-center gap-3 rounded-xl border border-white/5 bg-white/[0.02] px-3.5 py-2.5 transition duration-300 hover:translate-x-1 hover:border-white/10"
-          >
-            <span
-              className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border font-mono text-[11px] font-bold ${a.border} ${a.bg} ${a.text}`}
-            >
-              {skill.badge}
-            </span>
-            <p className="text-sm font-medium text-zinc-300 group-hover:text-white">
-              {skill.name}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function ProjectCard({
-  project,
-  index,
-}: {
-  project: {
-    title: string;
-    description: string;
-    tags: string[];
-    image: string;
-    year: string;
-  };
-  index: number;
-}) {
-  return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.035] shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_20px_70px_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-violet-400/40 hover:shadow-[0_20px_80px_rgba(139,92,246,0.12)]">
-      <div className="relative aspect-[16/10] overflow-hidden">
-        <img
-          src={project.image}
-          alt={`Preview project ${project.title}`}
-          className="block h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#03030b] via-[#03030b]/40 to-transparent" />
-        <span className="absolute left-4 top-4 rounded-full border border-white/10 bg-black/50 px-3 py-1 font-mono text-xs text-zinc-300 backdrop-blur">
-          0{index + 1} · {project.year}
-        </span>
-        <span className="absolute right-4 top-4 text-xl text-zinc-300 transition group-hover:text-blue-300">
-          ↗
-        </span>
-      </div>
-
-      <div className="relative flex flex-1 flex-col p-6">
-        <h3 className="text-2xl font-semibold">{project.title}</h3>
-
-        <p className="mt-3 min-h-16 flex-1 text-sm leading-relaxed text-zinc-500">
-          {project.description}
-        </p>
-
-        <div className="mt-6 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full border border-white/10 px-3 py-1 font-mono text-xs text-zinc-400"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-    </article>
-  );
-}
-
-/* ---------------- Global animation styles ---------------- */
-
-function GlobalStyles() {
-  return (
-    <style>{`
-      .aurora {
-        animation: auroraFloat 12s ease-in-out infinite alternate;
-      }
-
-      .aurora-two {
-        animation-delay: -4s;
-        animation-duration: 15s;
-      }
-
-      .aurora-three {
-        animation-delay: -8s;
-        animation-duration: 18s;
-      }
-
-      @keyframes auroraFloat {
-        0% {
-          transform: translate3d(-30px, -20px, 0) scale(1);
-        }
-        50% {
-          transform: translate3d(45px, 35px, 0) scale(1.12);
-        }
-        100% {
-          transform: translate3d(-10px, 70px, 0) scale(0.96);
-        }
-      }
-
-      .glow-breathe {
-        animation: breathe 9s ease-in-out infinite;
-      }
-      .glow-breathe-delayed {
-        animation-duration: 11s;
-        animation-delay: -3s;
-      }
-      .glow-breathe-slow {
-        animation-duration: 14s;
-        animation-delay: -6s;
-      }
-      @keyframes breathe {
-        0%, 100% { opacity: 0.35; transform: scale(0.92); }
-        50% { opacity: 0.85; transform: scale(1.08); }
-      }
-
-      .scanlines {
-        background: repeating-linear-gradient(
-          to bottom,
-          rgba(255,255,255,0.025) 0px,
-          rgba(255,255,255,0.025) 1px,
-          transparent 1px,
-          transparent 3px
-        );
-      }
-
-      .cursor {
-        display: inline-block;
-        width: 7px;
-        height: 12px;
-        margin-left: 4px;
-        background: currentColor;
-        animation: blink 1s steps(1) infinite;
-        vertical-align: -1px;
-      }
-      @keyframes blink { 50% { opacity: 0; } }
-
-      .float-slow {
-        animation: floaty 6s ease-in-out infinite;
-      }
-      .float-slow-delayed {
-        animation: floaty 6s ease-in-out infinite;
-        animation-delay: 1.5s;
-      }
-      @keyframes floaty {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-      }
-
-      .marquee {
-        animation: marquee 22s linear infinite;
-        width: max-content;
-      }
-      @keyframes marquee {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-      }
-
-      /* Site navbar — solid dark bar, fixed at all times (see JSX: fixed
-         instead of sticky, since the page has an overflow-hidden
-         ancestor that broke sticky positioning). Neon now wraps the whole
-         border via ::before instead of a single line under the bar. */
-      .site-nav {
-        position: relative;
-        border-radius: 1.1rem;
-        border: 1px solid rgba(255,255,255,0.09);
-        background: #0a0a12e6;
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        box-shadow:
-          inset 0 1px 0 rgba(255,255,255,0.06),
-          0 16px 40px rgba(0,0,0,0.5);
-      }
-      .site-nav::before {
-        content: "";
-        position: absolute;
-        inset: -1.5px;
-        border-radius: inherit;
-        padding: 1.5px;
-        background: conic-gradient(from var(--angle), #8b5cf6, #3b82f6, #c084fc, #8b5cf6);
-        -webkit-mask:
-          linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        animation: neonRotate 6s linear infinite;
-        opacity: 0.55;
-        pointer-events: none;
-      }
-      .nav-link {
-        position: relative;
-        padding-bottom: 2px;
-        transition: color 200ms;
-      }
-      .nav-link::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -3px;
-        width: 100%;
-        height: 1.5px;
-        background: linear-gradient(90deg, #8b5cf6, #3b82f6);
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 250ms cubic-bezier(0.16,1,0.3,1);
-      }
-      .nav-link:hover {
-        color: #fff;
-      }
-      .nav-link:hover::after {
-        transform: scaleX(1);
-      }
-
-      /* Distinct "Let's Collaborate" CTA — legible at rest, shine only on hover */
-      .cta-glow {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        border-radius: 9999px;
-        padding: 0.65rem 1.5rem;
-        font-family: var(--font-mono, monospace);
-        font-size: 0.9rem;
-        font-weight: 700;
-        letter-spacing: 0.01em;
-        color: #ffffff;
-        background: linear-gradient(135deg, #8b5cf6, #3b82f6);
-        box-shadow: 0 8px 24px rgba(139,92,246,0.35);
-        overflow: hidden;
-        animation: ctaPulse 2.8s ease-in-out infinite;
-        transition: transform 300ms cubic-bezier(0.16,1,0.3,1), box-shadow 300ms;
-      }
-      .cta-glow svg {
-        color: #ede9fe;
-        flex-shrink: 0;
-      }
-      .cta-glow::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -60%;
-        width: 35%;
-        height: 100%;
-        background: linear-gradient(120deg, transparent, rgba(255,255,255,0.55), transparent);
-        transform: skewX(-20deg);
-        transition: left 650ms ease;
-        pointer-events: none;
-      }
-      .cta-glow:hover::before {
-        left: 140%;
-      }
-      .cta-glow:hover {
-        transform: translateY(-2px) scale(1.03);
-        box-shadow: 0 12px 32px rgba(139,92,246,0.55);
-      }
-      @keyframes ctaPulse {
-        0%, 100% { box-shadow: 0 8px 24px rgba(139,92,246,0.32); }
-        50% { box-shadow: 0 8px 32px rgba(139,92,246,0.55); }
-      }
-
-      /* Neon rotating frame — used around photos. Toned down (opacity/blur
-         reduced in the component itself) since it was glowing too strong. */
-      @property --angle {
-        syntax: '<angle>';
-        inherits: false;
-        initial-value: 0deg;
-      }
-      .neon-glow {
-        background: conic-gradient(from var(--angle), #8b5cf6, #3b82f6, #c084fc, #8b5cf6);
-        animation: neonRotate 5s linear infinite;
-      }
-      .neon-border {
-        background: conic-gradient(from var(--angle), #a855f7, #60a5fa, #c084fc, #a855f7);
-        animation: neonRotate 5s linear infinite;
-      }
-      @keyframes neonRotate {
-        to { --angle: 360deg; }
-      }
-
-      /* Fluid typography — scales down smoothly on narrow screens instead
-         of jumping between fixed breakpoints. Applied to the hero name and
-         all section headings. */
-      .fluid-name {
-        font-size: clamp(2.25rem, 7vw + 0.5rem, 4.75rem);
-        line-height: 1.05;
-      }
-      .fluid-h2 {
-        font-size: clamp(1.65rem, 3.2vw + 0.6rem, 2.5rem);
-        line-height: 1.15;
-      }
-
-      /* Cursor aura + trail — solid gradient, not glassy */
-      .cursor-aura {
-        width: 26px;
-        height: 26px;
-        margin-left: -13px;
-        margin-top: -13px;
-        border-radius: 9999px;
-        background: linear-gradient(135deg, #a855f7, #7c3aed);
-        box-shadow: 0 0 22px 6px rgba(139,92,246,0.55);
-        transition: transform 0.02s linear;
-      }
-
-      .trail-dot {
-        width: 9px;
-        height: 9px;
-        margin-left: -4.5px;
-        margin-top: -4.5px;
-        border-radius: 9999px;
-        background: linear-gradient(135deg, #a855f7, #7c3aed);
-        box-shadow: 0 0 12px 3px rgba(139,92,246,0.6);
-        animation: trailFade 650ms ease-out forwards;
-      }
-      @keyframes trailFade {
-        0% { opacity: 1; transform: scale(1); }
-        100% { opacity: 0; transform: scale(0.15); }
-      }
-
-      .click-ripple {
-        width: 40px;
-        height: 40px;
-        margin-left: -20px;
-        margin-top: -20px;
-        border-radius: 9999px;
-        border: 1px solid rgba(139,92,246,0.6);
-        animation: rippleOut 600ms ease-out forwards;
-      }
-      @keyframes rippleOut {
-        0% { opacity: 0.8; transform: scale(0.3); }
-        100% { opacity: 0; transform: scale(1.8); }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .marquee, .float-slow, .float-slow-delayed, .aurora, .glow-breathe,
-        .glitch::before, .glitch::after,
-        .cursor-aura, .trail-dot, .click-ripple, .cta-glow::before,
-        .site-nav::before, .neon-glow, .neon-border {
-          animation: none !important;
-        }
-      }
-        @keyframes wave1 {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes wave2 {
-  0% {
-    transform: translateX(-50%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes wave3 {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes wave4 {
-  0% {
-    transform: translateX(-50%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-}
-    `}</style>
   );
 }
